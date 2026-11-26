@@ -1,0 +1,82 @@
+[
+  {
+    "teste": "1a. Ambiente OK",
+    "ok": true,
+    "detalhe": "Node, FFmpeg, Python, Whisper+modelo, Remotion+navegador, SFX"
+  },
+  {
+    "teste": "1b. Marca salva",
+    "ok": true,
+    "detalhe": "config/marca.json (Contractors Growth Club); entrevista confirmada: NÃO — pendente com o Rafael"
+  },
+  {
+    "teste": "1c. Vídeo-teste de 20s (Motor A)",
+    "ok": true,
+    "detalhe": "24.3s bruto → 19.6s editado; corte de silêncio ✓, 1 take errado removido, legenda palavra por palavra ✓, zoom ✓, SFX ✓"
+  },
+  {
+    "teste": "2a. Sem aprovação não produz",
+    "ok": true,
+    "detalhe": "produzir antes do 'aprovado' foi bloqueado"
+  },
+  {
+    "teste": "2b. Custo mostrado antes de gerar",
+    "ok": true,
+    "detalhe": "estimativa US$ 0,00 (Motor A) exibida antes de qualquer cena existir"
+  },
+  {
+    "teste": "2c. Roteiro na estrutura do método",
+    "ok": true,
+    "detalhe": "10 blocos: hook → historia → mecanismo → oferta → ecossistema → prova → payback → garantia → qualificacao → cta; ecossistema logo após a oferta; travas de copy sem alerta"
+  },
+  {
+    "teste": "2d. Aprovação registrada",
+    "ok": true,
+    "detalhe": "frase: “aprovado” em 2026-11-26 06:50"
+  },
+  {
+    "teste": "2e. Preview renderizado",
+    "ok": true,
+    "detalhe": "curso-preview-v1.mp4 (79s)"
+  },
+  {
+    "teste": "2f. Final em final/",
+    "ok": true,
+    "detalhe": "curso-vsl-v1.mp4 (79s)"
+  },
+  {
+    "teste": "3a. Só a cena da oferta foi refeita",
+    "ok": true,
+    "detalhe": "refeitas: ['oferta']; reaproveitadas: 9 cenas"
+  },
+  {
+    "teste": "3b. Aviso de take com preço antigo",
+    "ok": true,
+    "detalhe": "a máquina avisou que a FALA da oferta não diz US$ 87 (regravar só esse take)"
+  },
+  {
+    "teste": "3c. Tela da oferta com o preço novo",
+    "ok": true,
+    "detalhe": "por US$ 87"
+  },
+  {
+    "teste": "3d. Nova versão do final",
+    "ok": true,
+    "detalhe": "final/curso-vsl-v2.mp4"
+  },
+  {
+    "teste": "4a. Produções sem nenhuma tentativa de API",
+    "ok": true,
+    "detalhe": "motor A, motor_b ligado=False; rodadas com MAQUINA_BLOQUEAR_APIS=1; log de API: 0 linhas"
+  },
+  {
+    "teste": "4b. Portão bloqueia chamada direta",
+    "ok": true,
+    "detalhe": "elevenlabs: bloqueado (Motor B desligado neste projeto (precisa do comando explícito do Rafael).); fal_avatar: bloqueado (Motor B desligado neste projeto (precisa do comando explícito do Rafael).); fal_broll: bloqueado (B-roll por IA desligado neste projeto.)"
+  },
+  {
+    "teste": "4c. Só apis.py fala com a internet",
+    "ok": true,
+    "detalhe": "nenhum outro módulo abre conexão"
+  }
+]

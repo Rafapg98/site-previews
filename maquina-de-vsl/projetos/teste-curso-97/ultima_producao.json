@@ -1,0 +1,25 @@
+{
+  "renderizadas": [
+    "oferta"
+  ],
+  "reaproveitadas": [
+    "hook",
+    "historia",
+    "mecanismo",
+    "ecossistema",
+    "prova",
+    "payback",
+    "garantia",
+    "qualificacao",
+    "cta"
+  ],
+  "avisos": [
+    "O take do bloco 'oferta' não fala 'US$ 87'. Se o preço mudou, regrave só esse take (entrada/teste-curso-97/04-oferta.mp4) — a tela já mostra o preço novo.",
+    "O take do bloco 'cta' não fala 'US$ 87'. Se o preço mudou, regrave só esse take (entrada/teste-curso-97/10-cta.mp4) — a tela já mostra o preço novo."
+  ],
+  "erros_removidos": [],
+  "arquivo": "/home/user/site-previews/maquina-de-vsl/projetos/teste-curso-97/final/curso-vsl-v2.mp4",
+  "duracao_s": 79.2,
+  "tempo_s": 25,
+  "quando": "2026-11-26 06:59"
+}

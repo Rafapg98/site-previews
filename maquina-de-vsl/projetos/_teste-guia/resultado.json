@@ -1,0 +1,33 @@
+{
+  "bruto": "/home/user/site-previews/maquina-de-vsl/entrada/teste-guia/teste-20s.mp4",
+  "chave": "8b9a5c712d83c476",
+  "duracao_bruto": 24.33,
+  "duracao_cortado": 19.57,
+  "trechos": [
+    [
+      0.0,
+      5.12
+    ],
+    [
+      8.921,
+      15.831
+    ],
+    [
+      16.821,
+      24.333
+    ]
+  ],
+  "erros_removidos": [
+    "take repetido: “Eu tinha experiência, sabia fazer...”"
+  ],
+  "texto": "Se pra ganhar mais, você precisa trabalhar cada vez mais, até onde sua empresa vai crescer. Eu tinha experiência, sabia fazer serviço, mas estava em casa com dificuldade pra andar, pensando em que dia iria conseguir voltar pra obra. Meu nome é Rafael Porfirio, e eu passei 5 anos trabalhando como diarista, pois comecei a instalação de piso e trabalhar de segunda a segunda.",
+  "reaproveitado": false,
+  "checks": {
+    "corte_de_silencio": true,
+    "erros_removidos": 1,
+    "legenda_palavra_por_palavra": true,
+    "zoom": true,
+    "sfx": true
+  },
+  "final": "/home/user/site-previews/maquina-de-vsl/projetos/_teste-guia/final/teste-20s-editado.mp4"
+}

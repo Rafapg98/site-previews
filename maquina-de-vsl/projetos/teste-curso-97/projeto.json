@@ -1,0 +1,60 @@
+{
+  "slug": "teste-curso-97",
+  "produto": "curso",
+  "formato": "9:16",
+  "motor": "A",
+  "motor_b": {
+    "ligado": false,
+    "autorizacao": null
+  },
+  "broll_ia": {
+    "ligado": false,
+    "autorizacao": null
+  },
+  "versao": 2,
+  "takes": {},
+  "historico": [
+    {
+      "versao": 1,
+      "quando": "2026-11-26 06:58",
+      "arquivo": "final/curso-vsl-v1.mp4",
+      "hash": "765b46c727b0078d",
+      "idioma": "pt",
+      "renderizadas": [
+        "hook",
+        "historia",
+        "mecanismo",
+        "oferta",
+        "ecossistema",
+        "prova",
+        "payback",
+        "garantia",
+        "qualificacao",
+        "cta"
+      ],
+      "reaproveitadas": []
+    },
+    {
+      "versao": 2,
+      "quando": "2026-11-26 06:59",
+      "arquivo": "final/curso-vsl-v2.mp4",
+      "hash": "45ca464c5a85480e",
+      "idioma": "pt",
+      "renderizadas": [
+        "oferta"
+      ],
+      "reaproveitadas": [
+        "hook",
+        "historia",
+        "mecanismo",
+        "ecossistema",
+        "prova",
+        "payback",
+        "garantia",
+        "qualificacao",
+        "cta"
+      ]
+    }
+  ],
+  "criado_em": "2026-11-26 06:50"
+}

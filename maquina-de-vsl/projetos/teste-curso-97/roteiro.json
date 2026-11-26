@@ -1,0 +1,112 @@
+[
+  {
+    "id": "hook",
+    "ordem": 1,
+    "titulo": "Hook",
+    "fala": "Você que trabalha com construção aqui nos Estados Unidos: dá pra sair da diária e ter a sua própria empresa, montada do jeito certo — sem pagar agência que não entrega e sem cair em guru. E você tem {garantia.dias} dias pra testar sem risco.",
+    "tempo_estimado_s": 10,
+    "modo": "fala",
+    "direcao": "Talking-head close, energia alta. Lower-third com nome. Corte seco, sem vinheta.",
+    "take": "01-hook",
+    "motor_b": false
+  },
+  {
+    "id": "historia",
+    "ordem": 2,
+    "titulo": "História e inimigo nomeado",
+    "fala": "Eu passei anos trabalhando de sub, de segunda a segunda. Teve uma hora que eu quase voltei pro Brasil. Hoje eu vivo da minha própria empresa, a RP Renovations, aqui em Tampa Bay. E o problema nunca foi falta de trabalho: foi cair na mão de quem vive de vender pra contractor. Agência que cobra e não entrega. Guru que vive de curso. Intermediário que fica com a sua margem. Eu não vivo de curso. Eu vivo da obra.",
+    "tempo_estimado_s": 40,
+    "modo": "fala",
+    "direcao": "Talking-head + B-roll (obras reais dele quando houver; senão B-roll gráfico). Zoom punch-in na virada.",
+    "take": "02-historia",
+    "motor_b": false
+  },
+  {
+    "id": "mecanismo",
+    "ordem": 3,
+    "titulo": "Mecanismo",
+    "fala": "No curso eu te mostro o passo a passo que eu usei pra montar a minha: como abrir a LLC, como aparecer no Google, como ter um site que vende, como controlar orçamento e obra num dashboard e como chegar nos clientes. É o mesmo sistema que roda na minha empresa todo dia.",
+    "tempo_estimado_s": 30,
+    "modo": "tela",
+    "direcao": "Tela de motion: itens entrando um a um. Rafael em círculo no canto.",
+    "take": "03-mecanismo",
+    "motor_b": false
+  },
+  {
+    "id": "oferta",
+    "ordem": 4,
+    "titulo": "Oferta com stack ancorado",
+    "fala": "O {curso.nome} sai de {curso.preco_de} por {curso.preco_por}. Você ainda leva os 2 e-books e o primeiro mês do plano {curso.assinatura.plano} grátis, com o cupom {curso.assinatura.cupom}. Depois, se quiser ficar, são {curso.assinatura.depois} por mês.",
+    "tempo_estimado_s": 30,
+    "modo": "tela",
+    "direcao": "Stack: itens com valor, soma riscada, 'De/Por' grande. Ding no preço. Rafael em círculo.",
+    "take": "04-oferta",
+    "motor_b": false
+  },
+  {
+    "id": "ecossistema",
+    "ordem": 5,
+    "titulo": "Bloco ecossistema",
+    "fala": "E isso é só a porta de entrada. Dentro da plataforma tem um mundo maior: o Kit Empresa Completa, pra quem quer a empresa montada com a gente do lado, e o ecossistema de trabalho entre contractors e subs. Quando você entrar, explora. Você vai ver.",
+    "tempo_estimado_s": 20,
+    "modo": "tela",
+    "direcao": "Dois cartões: Kit Empresa Completa e ecossistema contractors ↔ subs. Curiosidade, sem revelar método.",
+    "take": "05-ecossistema",
+    "motor_b": false
+  },
+  {
+    "id": "prova",
+    "ordem": 6,
+    "titulo": "Prova nomeada",
+    "fala": "Não é teoria. Minha empresa tem nota {provas.google.nota} no Google com {provas.google.avaliacoes} avaliações. Em 2026 a gente já passou de 1 milhão de dólares em obras vendidas e de 160 orçamentos fechados. E quem já passou por aqui fala por si: Marc Meunier, Octavio, Kenneth Piesnikowski.",
+    "tempo_estimado_s": 25,
+    "modo": "tela",
+    "direcao": "Números validados grandes + prints reais (assets/provas/) + nomes dos depoimentos.",
+    "take": "06-prova",
+    "motor_b": false
+  },
+  {
+    "id": "payback",
+    "ordem": 7,
+    "titulo": "Payback factual",
+    "fala": "Faz a conta comigo, com base real: nas 9 obras que eu tenho no Jobber, o ticket médio foi de {payback.ticket_medio} e o lucro médio, uns {payback.lucro_medio_por_obra} por obra. Isso não é promessa de quanto você vai ganhar. É o número da minha empresa, pra você ver o tamanho do que dá pra construir.",
+    "tempo_estimado_s": 20,
+    "modo": "tela",
+    "direcao": "A conta com a base declarada embaixo. Aviso: não é promessa de renda.",
+    "take": "07-payback",
+    "motor_b": false
+  },
+  {
+    "id": "garantia",
+    "ordem": 8,
+    "titulo": "Garantia",
+    "fala": "E o risco é meu: você tem {garantia.dias} dias de garantia. Se achar que não é pra você, eu devolvo 100%, sem perguntas.",
+    "tempo_estimado_s": 12,
+    "modo": "cartao",
+    "direcao": "Talking-head + selo de 7 dias girando.",
+    "take": "08-garantia",
+    "motor_b": false
+  },
+  {
+    "id": "qualificacao",
+    "ordem": 9,
+    "titulo": "Qualificação reversa",
+    "fala": "Agora, isso não é pra todo mundo. Não é pra quem quer apertar um botão e ver dinheiro cair. Não é pra quem ainda não tem nada pra vender. E não é pra quem espera resultado sem trabalhar.",
+    "tempo_estimado_s": 15,
+    "modo": "tela",
+    "direcao": "Lista 'Não é pra você se…' com X vermelho.",
+    "take": "09-qualificacao",
+    "motor_b": false
+  },
+  {
+    "id": "cta",
+    "ordem": 10,
+    "titulo": "CTA único",
+    "fala": "Se você trabalha com construção aqui nos Estados Unidos e quer empresa de verdade, clica no botão e garante a sua vaga por {curso.preco_por}. Empresa de verdade, sem guru.",
+    "tempo_estimado_s": 12,
+    "modo": "cartao",
+    "direcao": "Talking-head close + botão pulsando. CTA único.",
+    "take": "10-cta",
+    "motor_b": false
+  }
+]
