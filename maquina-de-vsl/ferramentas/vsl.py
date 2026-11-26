@@ -216,7 +216,8 @@ def montar_tela(bloco_id: str, produto: str) -> dict:
                     "deTexto": "", "porTexto": moeda(prod["preco_por"]),
                     "bonus": [b["item"] for b in prod["bonus"]],
                     "rodape": f"Quem tem o Kit paga {moeda(p['desconto_cruzado']['mentoria_para_quem_tem_kit'])}. Garantia de {p['garantia']['dias']} dias."}
-        itens = [{"item": s["item"], "valorTexto": moeda(s["valor"])} for s in prod["stack"]]
+        # stack de 1 item (curso) = só "De/Por", sem valor por item
+        itens = [{"item": s["item"], "valorTexto": moeda(s["valor"]) if len(prod["stack"]) > 1 else ""} for s in prod["stack"]]
         soma = sum(s["valor"] for s in prod["stack"])
         bonus = [b["item"] for b in prod.get("bonus", [])]
         if produto == "curso":

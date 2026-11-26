@@ -1,6 +1,6 @@
 {
-  "_status": "PRÉ-PREENCHIDO a partir do briefing do Rafael. A entrevista do /comecar confirma ou ajusta cada campo e troca 'confirmado' para true.",
-  "confirmado": false,
+  "_status": "CONFIRMADO pelo Rafael no /comecar em 2026-11-26.",
+  "confirmado": true,
   "dono": "Rafael Porfirio",
   "empresa": "RP Renovations",
   "marca": "Contractors Growth Club",
@@ -69,5 +69,7 @@
     "Jobber",
     "US$",
     "dólares"
-  ]
+  ],
+  "confirmado_em": "2026-11-26",
+  "produto_principal_texto": "Curso Da Diária ao Subcontractor — De US$ 297 por US$ 97 (produto de entrada)"
 }

@@ -7,22 +7,12 @@
   {
     "teste": "1b. Marca salva",
     "ok": true,
-    "detalhe": "config/marca.json (Contractors Growth Club); entrevista confirmada: NÃO — pendente com o Rafael"
+    "detalhe": "config/marca.json (Contractors Growth Club); entrevista confirmada: sim"
   },
   {
     "teste": "1c. Vídeo-teste de 20s (Motor A)",
     "ok": true,
     "detalhe": "24.3s bruto → 19.6s editado; corte de silêncio ✓, 1 take errado removido, legenda palavra por palavra ✓, zoom ✓, SFX ✓"
-  },
-  {
-    "teste": "2a. Sem aprovação não produz",
-    "ok": true,
-    "detalhe": "produzir antes do 'aprovado' foi bloqueado"
-  },
-  {
-    "teste": "2b. Custo mostrado antes de gerar",
-    "ok": true,
-    "detalhe": "estimativa US$ 0,00 (Motor A) exibida antes de qualquer cena existir"
   },
   {
     "teste": "2c. Roteiro na estrutura do método",
@@ -42,27 +32,7 @@
   {
     "teste": "2f. Final em final/",
     "ok": true,
-    "detalhe": "curso-vsl-v1.mp4 (79s)"
-  },
-  {
-    "teste": "3a. Só a cena da oferta foi refeita",
-    "ok": true,
-    "detalhe": "refeitas: ['oferta']; reaproveitadas: 9 cenas"
-  },
-  {
-    "teste": "3b. Aviso de take com preço antigo",
-    "ok": true,
-    "detalhe": "a máquina avisou que a FALA da oferta não diz US$ 87 (regravar só esse take)"
-  },
-  {
-    "teste": "3c. Tela da oferta com o preço novo",
-    "ok": true,
-    "detalhe": "por US$ 87"
-  },
-  {
-    "teste": "3d. Nova versão do final",
-    "ok": true,
-    "detalhe": "final/curso-vsl-v2.mp4"
+    "detalhe": "curso-vsl-v1.mp4 (79s), curso-vsl-v2.mp4 (79s)"
   },
   {
     "teste": "4a. Produções sem nenhuma tentativa de API",

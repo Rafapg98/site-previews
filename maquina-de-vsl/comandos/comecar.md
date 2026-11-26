@@ -31,8 +31,7 @@ mostrando o que já está lá e perguntando "é isso ou quer mudar?":
 2. Público (brasileiros que trabalham com construção nos EUA).
 3. Tom de voz (direto, de obra, sem "fala galera").
 4. Estilo visual (dourado metálico sobre verde-escuro; legenda amarela/branca embaixo, centralizada).
-5. Pendências do `produtos.json`: cidades de Marc Meunier, Octavio e Kenneth Piesnikowski; se quer o
-   stack do curso itemizado (valores por item somando US$ 297).
+5. (Já respondido em 2026-11-26: depoimentos só com nome, curso sem stack itemizado, +160 orçamentos validado.)
 Grave as respostas em `config/marca.json` (e `produtos.json` só para os dados que ele informar), troque
 `"confirmado": true` e salve um resumo na memória do projeto (este CLAUDE.md, seção "Marca confirmada",
 se ele mudar algo).

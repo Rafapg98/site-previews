@@ -10,7 +10,8 @@ fora do `produtos.json` ou promessa proibida. Mas a trava é rede de segurança 
 4. Payback sempre com a **base declarada** ("nas 9 obras que eu tenho no Jobber…") e com a frase de que não é
    promessa de renda.
 5. Provas permitidas (as únicas): Google 5.0 com 125 avaliações · +US$ 1M em obras vendidas em 2026 ·
-   +160 orçamentos fechados em 2026 · depoimentos de Marc Meunier, Octavio, Kenneth Piesnikowski.
+   +160 orçamentos fechados em 2026 (validado pelo Rafael) · depoimentos só com o nome, sem cidade: Marc Meunier, Octavio, Kenneth Piesnikowski.
+6. Curso: sem stack itemizado — só "De US$ 297 por US$ 97".
 
 ## Proibido
 - Promessa de renda ("você vai faturar/ganhar X"), lucro garantido, **lead/cliente garantido**.

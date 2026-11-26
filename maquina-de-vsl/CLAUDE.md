@@ -67,6 +67,14 @@ Comandos: **`/comecar`** (instalação guiada — `comandos/comecar.md`) e **`/v
 `roteiro.py` (estrutura + travas de copy), `apis.py` (portão único de API paga), `motor_b.py`,
 `broll_ia.py`, `ambiente.py` (checagem/instalação), `teste_guia.py` (teste de 20s), `sfx_kit.py`.
 
+## Marca confirmada (/comecar, 2026-11-26)
+
+- Produto principal de entrada: **Curso Da Diária ao Subcontractor — De US$ 297 por US$ 97** (1º mês Starter grátis, cupom MESGRATIS).
+- Curso **sem stack itemizado**: a oferta é só "De US$ 297 por US$ 97".
+- Provas: Google 5.0 com 125 avaliações · +US$ 1M em obras vendidas em 2026 · **+160 orçamentos fechados em 2026 (validado pelo Rafael)**.
+- Depoimentos: **só os nomes**, sem cidade — Marc Meunier, Octavio, Kenneth Piesnikowski.
+- Público, tom e estilo visual: como em `config/marca.json` (confirmado).
+
 ## Como falar com ele
 
 - Uma pergunta por vez. Mostre opções curtas quando for escolha.
