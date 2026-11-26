@@ -54,11 +54,18 @@ por palavra, ✅ zoom, ✅ SFX). Pergunte o que ele achou da legenda (cor, taman
 ## Passo 5 — Motor B (só se ele pedir)
 
 Só se ele disser que quer o Motor B pronto:
-- voz: gravar **1 minuto** falando natural, sem música, no mesmo microfone; criar o clone em
-  elevenlabs.io (Voices → Add voice → Instant Voice Clone) e colar o Voice ID em `config/chaves.env`;
-- avatar: foto frontal bem iluminada (ou vídeo-base de 10–20s parado olhando pra câmera) em
-  `assets/motor-b/foto-base.jpg`;
-- lembre: mesmo pronto, o Motor B **só roda numa VSL quando ele mandar** "usa o motor B nesta VSL".
+- **Gravação-base:** uma tomada contínua de 60–90s, sem música, de frente (roteiro e dicas em
+  `assets/motor-b/ROTEIRO-GRAVACAO.md`) → `entrada/motor-b/gravacao-base.mp4`.
+  Vídeo de VSL já editada NÃO serve (tem trilha por baixo e cortes; ver laudo em `assets/motor-b/LEIA-ME.md`).
+- `python3 ferramentas/preparar_motor_b.py entrada/motor-b/gravacao-base.mp4` → confere e gera
+  `assets/motor-b/voz-clone.wav` e `assets/motor-b/foto-base.jpg` (local, custo zero).
+- **ElevenLabs** (plano Starter, inclui clone instantâneo): ele mesmo sobe o `voz-clone.wav` em
+  Voices → Add a new voice → Instant Voice Clone, copia o **Voice ID** e cria uma **API key**
+  (Profile/Developers → API Keys) → cola os dois em `config/chaves.env`.
+- **fal.ai** (pré-pago, sem mensalidade): conta → Billing (adicionar crédito) → Keys → criar key →
+  `FAL_KEY` em `config/chaves.env`. O avatar usa o modelo `veed/fabric-1.0` (foto + voz → vídeo).
+- Mostre o custo da `config/custos.json` antes de qualquer geração.
+- Lembre: mesmo pronto, o Motor B **só roda numa VSL quando ele mandar** "usa o motor B nesta VSL".
 
 ## Fim
 

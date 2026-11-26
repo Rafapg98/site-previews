@@ -29,3 +29,8 @@ __pycache__/
 
 # testes
 testes/.tmp/
+
+# Motor B: sua foto, sua voz e a análise ficam só no seu computador
+assets/motor-b/*
+!assets/motor-b/LEIA-ME.md
+!assets/motor-b/ROTEIRO-GRAVACAO.md

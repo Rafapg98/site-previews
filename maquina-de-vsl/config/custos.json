@@ -2,16 +2,20 @@
   "_aviso": "Tabela de ESTIMATIVA de custo de API. Confira os valores no painel de cada serviço e ajuste aqui — a máquina usa estes números para mostrar o custo ANTES de gerar.",
   "atualizado_em": "2026-11-26",
   "elevenlabs": {
-    "usd_por_1000_caracteres": 0.30,
-    "nota": "Voz clonada (TTS). Varia por plano; no plano por assinatura o custo real é consumo de créditos."
+    "usd_por_1000_caracteres": 0.0,
+    "assinatura_usd_mes": 6,
+    "primeiro_mes_usd": 1,
+    "nota": "Plano Starter (US$ 1 no 1º mês, depois US$ 6/mês) já inclui o clone instantâneo de voz e ~30 mil créditos/mês. Um roteiro de VSL de 3 min tem ~3 mil caracteres: cabe no plano, sem custo extra. Fonte: elevenlabs.io/pricing (conferir na hora de assinar)."
   },
   "fal_avatar_lipsync": {
-    "usd_por_segundo": 0.10,
-    "nota": "Avatar com lip-sync (Motor B). Varia por modelo escolhido na fal.ai."
+    "usd_por_segundo": 0.15,
+    "usd_por_segundo_480p": 0.08,
+    "modelo": "veed/fabric-1.0 (foto + áudio → vídeo falando), 720p",
+    "nota": "Pré-pago, sem mensalidade, cobra por segundo gerado. Fonte: fal.ai/models/veed/fabric-1.0 (conferir antes de gerar)."
   },
   "heygen_avatar": {
-    "usd_por_minuto": 1.00,
-    "nota": "Alternativa à fal.ai para o avatar (Motor B)."
+    "usd_por_minuto": 1.0,
+    "nota": "Alternativa NÃO recomendada agora: criação de Digital Twin pela API é recurso Enterprise e os preços variam por fonte."
   },
   "fal_broll_ia": {
     "usd_por_clipe_5s": 0.35,
