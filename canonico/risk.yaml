@@ -1,0 +1,31 @@
+# Regras duras de trading — FTMO Challenge 1-Step (canônico, 2026-11-26)
+# Regra dura só muda com a palavra do Rafael. Divergência = reportar, nunca "corrigir".
+produto: FTMO Challenge 1-Step (NAO e 2-Step)
+contas:
+  - { id: 1, ativo: XAU/USD, tamanho_usd: 200000 }
+  - { id: 2, ativo: BTC/USD, tamanho_usd: 200000 }
+meta_fase_unica_pct: 10            # +US$ 20.000 = +10R total pra funded
+max_daily_loss_casa_pct: 3         # US$ 6.000 — piso do dia = saldo 00:00 CE(S)T - 6.000 (equity)
+max_loss_pct: 10                   # TRAILING de fim de dia: piso = maior fechamento - US$ 20.000
+consistency_pct: 50                # melhor dia <= 50% do lucro total fechado; portao, nao violacao
+dias_minimos: 0
+split_rewards_pct: 90
+taxa_usd: 919                      # nao reembolsavel, por conta
+risco:
+  r_usd: 2000                      # 1% por trade
+  stop_pessoal_diario_usd: -4000   # por conta, dentro do limite da casa
+  limite_trades_dia: null          # sem teto: setup valido e alinhado entra
+  posicoes_abertas_por_conta: 1
+familias:
+  A: { nome: "sweep + rejeicao + shift de estrutura", portao_rr: 1.5 }
+  B: { nome: "rompimento + reteste", portao_rr: 2.0 }
+  C: { nome: "Fimathe corrigido (so ouro, ancora 20:00 Brasilia, canal nos corpos)", portao_rr: 1.5, alvo2: C2 }
+  D: { nome: "reversao em range", status: "somente estudo, meio risco" }
+drawdown_do_pico:
+  - { faixa: "<3%", risco: 1.0 }
+  - { faixa: "3-5%", risco: 0.5 }
+  - { faixa: ">=5%", acao: "pausa ate fim da semana + revisao escrita" }
+  - { faixa: ">=7%", acao: "stop total" }
+manejo: "50% no TP1, stop no break-even, runner ate 3R (R efetivo ~2,5R)"
+post_mortem: "todo trade fechado <= 0R ganha post-mortem na mesma checagem; padrao = NAO mudar nada; ajuste so com motivo valido em nivel de mecanismo; causa controlavel repetida 3+ vezes vira proposta formal"
+notificacao: "toda ENTRADA de trade e avisada ao Rafael na hora (ativo, conta, familia, entrada, stop, TP1, TP2, R)"
