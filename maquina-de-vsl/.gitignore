@@ -1,0 +1,31 @@
+# Chaves reais: nunca no git
+config/chaves.env
+*.env
+!config/chaves.env.example
+
+# Remotion
+remotion/node_modules/
+remotion/build/
+remotion/out/
+
+# Mídia pesada (fica só no seu computador)
+entrada/**
+!entrada/LEIA-ME.md
+projetos/*/cenas/
+projetos/*/audio/
+projetos/*/broll/
+projetos/*/.cache/
+projetos/*/preview/
+projetos/*/final/
+projetos/*/brutos/
+assets/broll-real/*
+!assets/broll-real/LEIA-ME.md
+assets/musica/*
+!assets/musica/LEIA-ME.md
+
+__pycache__/
+*.pyc
+.DS_Store
+
+# testes
+testes/.tmp/

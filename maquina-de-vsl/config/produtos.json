@@ -1,0 +1,95 @@
+{
+  "_aviso": "FONTE ÚNICA de preço, oferta, prova e números. Se qualquer outro documento conflitar, ESTE arquivo vale. A máquina não usa nenhum número que não esteja aqui.",
+  "moeda": "US$",
+  "curso": {
+    "nome": "Curso Da Diária ao Subcontractor",
+    "slug": "curso",
+    "preco_de": 297,
+    "preco_por": 97,
+    "assinatura": {
+      "plano": "Starter",
+      "primeiro_mes": "grátis",
+      "cupom": "MESGRATIS",
+      "cupom_regra": "100% na primeira fatura, sem trial",
+      "depois": 9.90,
+      "depois_texto": "US$ 9,90/mês se ficar"
+    },
+    "stack": [
+      { "item": "Curso completo Da Diária ao Subcontractor", "valor": 297 }
+    ],
+    "inclusos_sem_valor": [
+      "2 e-books (De Sub a Contractor e Obra com Lucro) — sempre disponíveis, fora da cota"
+    ],
+    "bonus": [
+      { "item": "1º mês do plano Starter grátis (cupom MESGRATIS)" }
+    ],
+    "cta": { "tipo": "checkout", "texto": "Quero minha vaga" },
+    "_pendente_stack": "O briefing só define 'De US$ 297 por US$ 97' — sem valor por item. Se o Rafael quiser o stack do curso itemizado, ele passa os valores e a soma deve bater com preco_de (a máquina confere)."
+  },
+  "planos": [
+    { "nome": "Starter", "mensal": 9.90 },
+    { "nome": "Growth", "mensal": 24.90 },
+    { "nome": "Pro", "mensal": 39.90 }
+  ],
+  "planos_nota": "Os 2 e-books são sempre disponíveis e fora da cota de conteúdo em todos os planos.",
+  "kit": {
+    "nome": "Kit Empresa Completa",
+    "slug": "kit",
+    "preco_por": 997,
+    "preco_de": 1750,
+    "stack": [
+      { "item": "Google Setup 1:1 com abertura da LLC (taxa estadual de US$ 125 inclusa)", "valor": 400 },
+      { "item": "Dashboard Profissional", "valor": 300 },
+      { "item": "Website + Folder", "valor": 750 },
+      { "item": "Templates de invoice/estimate com cláusulas de proteção + mini-curso", "valor": 50 },
+      { "item": "Kit de QR Codes", "valor": 100 },
+      { "item": "Identidade Visual Básica", "valor": 150 }
+    ],
+    "bonus": [
+      { "item": "Compliance Pack (bônus do lote de lançamento)", "descricao": "a empresa do cliente aplicada como subcontratada nas empresas/GCs da região dele, processo rodado por nós" },
+      { "item": "1 mês de Growth grátis" }
+    ],
+    "limites": [
+      "O Kit é o SETUP.",
+      "Não inclui ensinar/operar Google Ads.",
+      "Não inclui o selo verificado do Local Services (a aprovação é do Google)."
+    ],
+    "cta": { "tipo": "aplicacao_whatsapp", "texto": "Aplicar e falar no WhatsApp" }
+  },
+  "mentoria": {
+    "nome": "Mentoria 1:1",
+    "slug": "mentoria",
+    "preco_por": 2997,
+    "bonus": [ { "item": "3 meses de Growth grátis" } ],
+    "cta": { "tipo": "aplicacao_whatsapp", "texto": "Aplicar para a Mentoria" }
+  },
+  "desconto_cruzado": {
+    "percentual": 15,
+    "regra": "Entre Kit e Mentoria, nos dois sentidos",
+    "mentoria_para_quem_tem_kit": 2547.45,
+    "kit_para_quem_tem_mentoria": 847.45
+  },
+  "mini_cursos": [17.90, 27.90],
+  "garantia": { "dias": 7, "percentual": 100, "texto": "7 dias, 100%, sem perguntas", "vale_para": ["curso", "kit", "mentoria"] },
+  "provas": {
+    "google": { "nota": "5.0", "avaliacoes": 125, "texto": "Google 5.0 com 125 avaliações" },
+    "obras_vendidas_2026": { "valor": "+US$ 1M", "texto": "+US$ 1M em obras vendidas em 2026" },
+    "orcamentos_fechados_2026": { "valor": "+160", "texto": "+160 orçamentos fechados em 2026" },
+    "depoimentos": [
+      { "nome": "Marc Meunier", "cidade": null },
+      { "nome": "Octavio", "cidade": null },
+      { "nome": "Kenneth Piesnikowski", "cidade": null }
+    ],
+    "_pendente": "Cidades dos depoimentos não informadas. Enquanto for null, a tela mostra só o nome."
+  },
+  "payback": {
+    "ticket_medio": 14021,
+    "lucro_medio_por_obra": 4837,
+    "base": "9 obras reais no Jobber, US$ 126.190 faturados, margem média de 34,5%",
+    "kit_vezes": "~4,9×",
+    "mentoria_vezes": "~1,6×",
+    "regra": "Sempre com a base declarada. Nunca como promessa de renda."
+  },
+  "publico": "Brasileiros que trabalham com construção NOS EUA (nunca ângulo Brasil).",
+  "idiomas": { "principal": "pt", "secundario_legenda": "en" }
+}

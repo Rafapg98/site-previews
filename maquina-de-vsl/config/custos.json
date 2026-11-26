@@ -1,0 +1,24 @@
+{
+  "_aviso": "Tabela de ESTIMATIVA de custo de API. Confira os valores no painel de cada serviço e ajuste aqui — a máquina usa estes números para mostrar o custo ANTES de gerar.",
+  "atualizado_em": "2026-11-26",
+  "elevenlabs": {
+    "usd_por_1000_caracteres": 0.30,
+    "nota": "Voz clonada (TTS). Varia por plano; no plano por assinatura o custo real é consumo de créditos."
+  },
+  "fal_avatar_lipsync": {
+    "usd_por_segundo": 0.10,
+    "nota": "Avatar com lip-sync (Motor B). Varia por modelo escolhido na fal.ai."
+  },
+  "heygen_avatar": {
+    "usd_por_minuto": 1.00,
+    "nota": "Alternativa à fal.ai para o avatar (Motor B)."
+  },
+  "fal_broll_ia": {
+    "usd_por_clipe_5s": 0.35,
+    "nota": "B-roll gerado por IA (texto→vídeo). Só roda se o projeto ligar 'broll_ia'."
+  },
+  "local": {
+    "usd": 0,
+    "nota": "FFmpeg, Whisper e Remotion rodam no seu computador: custo de API zero (só tempo de máquina)."
+  }
+}

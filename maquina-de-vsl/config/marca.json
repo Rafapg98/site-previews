@@ -1,0 +1,73 @@
+{
+  "_status": "PRÉ-PREENCHIDO a partir do briefing do Rafael. A entrevista do /comecar confirma ou ajusta cada campo e troca 'confirmado' para true.",
+  "confirmado": false,
+  "dono": "Rafael Porfirio",
+  "empresa": "RP Renovations",
+  "marca": "Contractors Growth Club",
+  "regiao": "Tampa Bay, FL",
+  "assinatura": "Empresa de verdade, sem guru.",
+  "produto_principal": "curso",
+  "publico": "Brasileiros que trabalham com construção nos EUA — subs, instaladores, diaristas que querem virar contractor com empresa de verdade.",
+  "tom_de_voz": "Direto, de obra, sem enrolação e sem 'fala galera'. Fala de quem vive da obra, não de curso.",
+  "estilo_visual": "Dourado metálico sobre verde-escuro profundo. Talking-head de camiseta preta, peito pra cima.",
+  "cores": {
+    "verde_profundo": "#06180F",
+    "verde": "#0B2A1F",
+    "verde_claro": "#14432F",
+    "dourado": "#C9A24B",
+    "dourado_claro": "#F3D98B",
+    "dourado_escuro": "#8C6A22",
+    "branco": "#FFFFFF",
+    "destaque_legenda": "#FFD43B",
+    "vermelho_risco": "#E0483E"
+  },
+  "fontes": {
+    "titulo": "Montserrat",
+    "legenda": "Montserrat",
+    "peso_titulo": 900,
+    "peso_legenda": 800
+  },
+  "legenda": {
+    "estilo": "palavra-por-palavra",
+    "cor": "#FFFFFF",
+    "cor_palavra_ativa": "#FFD43B",
+    "posicao": "baixo-centro",
+    "palavras_por_tela": 3,
+    "caixa_alta": false,
+    "contorno": true
+  },
+  "lower_third": {
+    "nome": "Rafael Porfirio",
+    "cargo": "Dono da RP Renovations · Tampa Bay, FL"
+  },
+  "whisper": {
+    "modelo": "small",
+    "prompt_inicial": "Rafael Porfirio, RP Renovations, Contractors Growth Club, hérnia de disco, LLC, Kit Empresa Completa, Jobber, Google, Tampa Bay, contractor, sub, GC, estimate, invoice, dashboard.",
+    "correcoes": {
+      "Porfilho": "Porfirio",
+      "Porfírio": "Porfirio",
+      "Contractor's": "Contractors",
+      "jober": "Jobber",
+      "Jober": "Jobber"
+    }
+  },
+  "palavras_destaque": [
+    "LLC",
+    "Google",
+    "site",
+    "dashboard",
+    "clientes",
+    "Kit",
+    "Mentoria",
+    "garantia",
+    "obra",
+    "empresa",
+    "contractor",
+    "sub",
+    "orçamento",
+    "orçamentos",
+    "Jobber",
+    "US$",
+    "dólares"
+  ]
+}

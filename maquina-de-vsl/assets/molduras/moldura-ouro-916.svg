@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="ouro" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3D98B"/><stop offset=".48" stop-color="#C9A24B"/><stop offset="1" stop-color="#8C6A22"/>
+    </linearGradient>
+  </defs>
+  <rect x="22" y="22" width="1036" height="1876" rx="22" fill="none" stroke="url(#ouro)" stroke-width="4" opacity=".6"/>
+</svg>
