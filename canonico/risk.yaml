@@ -5,6 +5,7 @@ rota_compra: ftmo.oanda.com (rota dos EUA)
 tipo_conta: Swing (decidido pelo Rafael em 2026-11-26; no 1-Step da rota OANDA o Swing EXISTE e e selecionavel)
 alavancagem: "1:30 e o numero de capa (FX). Por instrumento (specs oficiais OANDA, confirmadas 2026-11-26): XAUUSD contrato 100 oz, Swing 1:20; BTCUSD contrato 1, 1:4 nos dois tipos. Margem com R=US$ 2.000 nunca limita: pior stop do ouro (US$ 8) ~US$ 50 mil a ouro US$ 4.000; pior stop do BTC (US$ 800) ~US$ 62,5 mil a BTC US$ 100 mil. Passo de volume exato do MT5: confirmar na Specification pos-compra (a tabela oficial so da min units). Sizing sempre arredonda pra BAIXO no passo de volume."
 restricoes_funded: "Swing NAO tem restricao de noticia (+-2 min) nem obrigacao de fechar antes do fim de semana; essas restricoes eram do Standard e NAO se aplicam"
+fim_de_semana: "HOLD permitido pros DOIS ativos SE FIZER SENTIDO (decisao do Rafael, 2026-11-26): posicao protegida (stop no BE ou melhor, ou risco residual fracao pequena de R), estrutura HTF intacta, distancia do piso trailing confortavel mesmo com gap forte contra, nenhum evento de gap mapeado pra abertura de segunda; o plano declara a justificativa em uma linha. Faltando qualquer condicao, fecha antes da pausa de sexta. Abrir trade NOVO no fim de semana segue observacao (BTC) / impossivel (ouro fechado)."
 troca_de_tipo: "Standard->Swing nunca; Swing->Standard so com a conta sem nenhum trade"
 contas:
   - { id: 1, ativo: XAU/USD, tamanho_usd: 200000 }
