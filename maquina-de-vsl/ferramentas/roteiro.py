@@ -135,6 +135,34 @@ def rascunho(produto: str) -> list[dict]:
     return blocos
 
 
+# ------------------------------------------------------------------ variantes de começo
+def nomes_variantes(blocos: list[dict]) -> list[str | None]:
+    """['dor', 'stack', 'prova'] se algum bloco tiver 'variantes'; senão [None] (VSL única)."""
+    for b in blocos:
+        if b.get("variantes"):
+            return list(b["variantes"].keys())
+    return [None]
+
+
+def expandir(blocos: list[dict], nome: str | None) -> list[dict]:
+    """Roteiro de UMA variante: blocos com 'variantes' trocam fala/take/pasta; o resto é compartilhado."""
+    saida = []
+    for b in blocos:
+        b = dict(b)
+        if nome and b.get("variantes"):
+            v = b["variantes"][nome]
+            b["fala"] = v["fala"] if isinstance(v, dict) else v
+            if isinstance(v, dict) and v.get("tempo_estimado_s"):
+                b["tempo_estimado_s"] = v["tempo_estimado_s"]
+            b["take"] = f"{b['take']}-{nome}"
+            b["cena"] = f"{b['ordem']:02d}-{b['id']}-{nome}"
+        else:
+            b["cena"] = f"{b['ordem']:02d}-{b['id']}"
+        b.pop("variantes", None)
+        saida.append(b)
+    return saida
+
+
 def para_markdown(proj: dict, blocos: list[dict], aprovado: dict | None) -> str:
     total = sum(b["tempo_estimado_s"] for b in blocos)
     linhas = [f"# Roteiro — {proj['slug']}", "",
@@ -143,8 +171,26 @@ def para_markdown(proj: dict, blocos: list[dict], aprovado: dict | None) -> str:
               f"- Status: **{'APROVADO em ' + aprovado['quando'] if aprovado and aprovado.get('aprovado') else 'aguardando aprovação do Rafael'}**",
               "", "> Grave cada bloco num arquivo separado em `entrada/" + proj["slug"] + "/` com o nome indicado "
               "(ex.: `01-hook.mp4`). Errou? Fala **\"corta\"**, respira e repete a frase inteira — a máquina tira o erro.", ""]
+    variantes = [v for v in nomes_variantes(blocos) if v]
+    if variantes:
+        linhas += [f"> **{len(variantes)} versões** ({', '.join(variantes)}): só o começo muda; os outros blocos são "
+                   "gravados/gerados **uma vez** e reaproveitados nas três.", ""]
+        for nome in variantes:
+            tot = sum(b["tempo_estimado_s"] for b in expandir(blocos, nome))
+            linhas.append(f"- Versão **{nome}**: ~{tot}s")
+        linhas.append("")
     t = 0
     for b in blocos:
+        if b.get("variantes"):
+            dur = max((v.get("tempo_estimado_s", b["tempo_estimado_s"]) if isinstance(v, dict) else b["tempo_estimado_s"])
+                      for v in b["variantes"].values())
+            linhas += [f"## {b['ordem']}. {b['titulo']} — muda em cada versão  ·  0:00–0:{dur:02d}", ""]
+            for nome, v in b["variantes"].items():
+                fala = v["fala"] if isinstance(v, dict) else v
+                linhas += [f"**Versão {nome}:** {renderizar(fala)}", f"  → take: `entrada/{proj['slug']}/{b['take']}-{nome}.mp4`", ""]
+            linhas += [f"**Cena:** `{b['modo']}` — {b['direcao']}", ""]
+            t += dur
+            continue
         linhas += [f"## {b['ordem']}. {b['titulo']}  ·  {t // 60}:{t % 60:02d}–{(t + b['tempo_estimado_s']) // 60}:{(t + b['tempo_estimado_s']) % 60:02d}",
                    "", f"**Fala:** {renderizar(b['fala'])}", "", f"**Cena:** `{b['modo']}` — {b['direcao']}", "",
                    f"**Arquivo do take:** `entrada/{proj['slug']}/{b['take']}.mp4`" + ("  · **Motor B**" if b.get("motor_b") else ""), ""]
@@ -194,7 +240,12 @@ def checar_copy(blocos: list[dict]) -> list[str]:
     """Devolve a lista de problemas (vazia = ok)."""
     problemas = []
     permitidos = numeros_permitidos()
-    for b in blocos:
+    expandidos = []
+    for nome in nomes_variantes(blocos):
+        for b in expandir(blocos, nome):
+            if b["cena"] not in {x["cena"] for x in expandidos}:
+                expandidos.append({**b, "id": b["cena"].split("-", 1)[1]})
+    for b in expandidos:
         texto = renderizar(b["fala"])
         if re.search(r"\{[a-z_.0-9]+\}", texto):
             problemas.append(f"[{b['id']}] referência desconhecida ao produtos.json: {re.findall(r'[{][a-z_.0-9]+[}]', texto)}")

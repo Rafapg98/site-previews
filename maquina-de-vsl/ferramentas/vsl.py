@@ -54,7 +54,7 @@ def blocos(slug: str) -> list[dict]:
 
 
 def hash_roteiro(bl: list[dict]) -> str:
-    return hash_dados([{k: b.get(k) for k in ("id", "fala", "modo", "take", "motor_b")} for b in bl])
+    return hash_dados([{k: b.get(k) for k in ("id", "fala", "modo", "take", "motor_b", "variantes")} for b in bl])
 
 
 def agora() -> str:
@@ -121,19 +121,32 @@ def cmd_aprovar(a) -> None:
 
 
 # ------------------------------------------------------------------ custo
-def estimar_custo(proj: dict, bl: list[dict]) -> dict:
+def blocos_unicos(bl: list[dict]) -> list[dict]:
+    """Todas as cenas de todas as variantes, sem repetir as compartilhadas."""
+    vistos, out = set(), []
+    for nome in R.nomes_variantes(bl):
+        for b in R.expandir(bl, nome):
+            if b["cena"] not in vistos:
+                vistos.add(b["cena"])
+                out.append(b)
+    return out
+
+
+def estimar_custo(proj: dict, bl: list[dict], simular_b: bool = False) -> dict:
     tabela = ler_json(Path(__file__).resolve().parent.parent / "config" / "custos.json", {})
     itens = []
     itens.append({"item": "Edição local (FFmpeg + Whisper + Remotion)", "usd": 0.0})
-    if proj["motor"] == "B" and proj["motor_b"].get("ligado"):
-        for b in bl:
-            if b.get("motor_b") or not achar_take(proj, b):
+    if simular_b or (proj["motor"] == "B" and proj["motor_b"].get("ligado")):
+        segs = 0.0
+        for b in blocos_unicos(bl):
+            if simular_b or b.get("motor_b") or not achar_take(proj, b):
                 chars = len(R.renderizar(b["fala"]))
                 seg = max(3, chars / 15)
+                segs += seg
                 voz = chars / 1000 * tabela["elevenlabs"]["usd_por_1000_caracteres"]
                 av = seg * tabela["fal_avatar_lipsync"]["usd_por_segundo"]
-                itens.append({"item": f"Motor B · {b['id']}: voz ({chars} caracteres)", "usd": round(voz, 2)})
-                itens.append({"item": f"Motor B · {b['id']}: avatar (~{seg:.0f}s)", "usd": round(av, 2)})
+                itens.append({"item": f"Motor B · {b['cena']}: voz ({chars} caracteres, dentro do plano)", "usd": round(voz, 2)})
+                itens.append({"item": f"Motor B · {b['cena']}: avatar (~{seg:.0f}s × US$ {tabela['fal_avatar_lipsync']['usd_por_segundo']:.2f})", "usd": round(av, 2)})
     if proj["broll_ia"].get("ligado"):
         mencoes = sum(len(re.findall(r"\b(kit|curso|llc|google|site|dashboard|jobber|plataforma)\b", b["fala"], re.I))
                       for b in bl if b["modo"] == "fala")
@@ -156,6 +169,11 @@ def mostrar_custo(c: dict) -> None:
 
 def cmd_custo(a) -> None:
     proj = carregar(a.slug)
+    if getattr(a, "simular_motor_b", False):
+        c = estimar_custo(proj, blocos(a.slug), simular_b=True)
+        diga("(SIMULAÇÃO — o Motor B NÃO está ligado; nada foi aceito nem gerado)")
+        mostrar_custo(c)
+        return
     c = estimar_custo(proj, blocos(a.slug))
     mostrar_custo(c)
     c["aceito"] = bool(a.aceitar)
@@ -182,9 +200,9 @@ def achar_take(proj: dict, b: dict) -> Path | None:
 def cmd_takes(a) -> None:
     proj = carregar(a.slug)
     faltam = 0
-    for b in blocos(a.slug):
+    for b in blocos_unicos(blocos(a.slug)):
         t = achar_take(proj, b)
-        diga(f"   {'✅' if t else '⬜'} {b['ordem']:02d}. {b['titulo']}: " + (t.name if t else f"falta gravar → entrada/{a.slug}/{b['take']}.mp4"))
+        diga(f"   {'✅' if t else '⬜'} {b['cena']}. {b['titulo']}: " + (t.name if t else f"falta gravar → entrada/{a.slug}/{b['take']}.mp4"))
         faltam += 0 if t else 1
     diga(f"\n{faltam} take(s) faltando." if faltam else "\nTodos os takes estão na pasta.")
 
@@ -376,10 +394,23 @@ def cmd_produzir(a) -> None:
     bl = blocos(a.slug)
     checar_portao(proj, bl)
 
-    faltando = [b for b in bl if not achar_take(proj, b)]
+    variantes = [a.variante] if getattr(a, "variante", None) else R.nomes_variantes(bl)
+    if a.variante and a.variante not in R.nomes_variantes(bl):
+        erro(f"Variante '{a.variante}' não existe. Opções: {R.nomes_variantes(bl)}")
+    faltando = [b for b in blocos_unicos(bl) if not achar_take(proj, b)]
     motor_b_ativo = proj["motor"] == "B" and proj["motor_b"].get("ligado") and proj["motor_b"].get("autorizacao")
     if faltando and not motor_b_ativo:
         erro("Faltam gravações (Motor A):\n" + "\n".join(f"   - entrada/{a.slug}/{b['take']}.mp4  ({b['titulo']})" for b in faltando))
+
+    for nome in variantes:
+        if nome:
+            diga(f"\n════ Versão: {nome} ════")
+        _produzir(a, proj, R.expandir(bl, nome), nome, motor_b_ativo)
+
+
+def _produzir(a, proj: dict, bl: list[dict], variante: str | None, motor_b_ativo) -> None:
+    import editar
+    import render
 
     t0 = time.time()
     hash_bundle = render.garantir_bundle()
@@ -390,7 +421,7 @@ def cmd_produzir(a) -> None:
 
     with render.ServidorLocal() as srv:
         for b in bl:
-            cena_dir = pasta(a.slug) / "cenas" / f"{b['ordem']:02d}-{b['id']}"
+            cena_dir = pasta(a.slug) / "cenas" / b["cena"]
             take = achar_take(proj, b)
             if (b.get("motor_b") or take is None) and motor_b_ativo:
                 import motor_b
@@ -428,25 +459,28 @@ def cmd_produzir(a) -> None:
     musica = render.musica_de_fundo()
     versao_hash = hash_dados(hashes)
     sufixo_idioma = "" if a.legenda == "pt" else f"-{a.legenda.upper()}"
+    tipo = f"anuncio-{variante}" if variante else "vsl"
     if a.final:
-        ultimo = proj["historico"][-1] if proj["historico"] else None
+        mesmos = [h for h in proj["historico"] if h.get("variante") == variante]
+        ultimo = mesmos[-1] if mesmos else None
         if ultimo and ultimo.get("hash") == versao_hash and ultimo.get("idioma", "pt") == a.legenda:
             versao = ultimo["versao"]
         else:
-            versao = proj["versao"] + (1 if a.legenda == "pt" or not proj["versao"] else 0)
-        destino = pasta(a.slug) / "final" / f"{proj['produto']}-vsl-v{versao}{sufixo_idioma}.mp4"
+            base_v = ultimo["versao"] if ultimo else 0
+            versao = base_v + (1 if a.legenda == "pt" or not base_v else 0)
+        destino = pasta(a.slug) / "final" / f"{proj['produto']}-{tipo}-v{versao}{sufixo_idioma}.mp4"
     else:
-        versao = proj["versao"] + 1
-        destino = pasta(a.slug) / "preview" / f"{proj['produto']}-preview-v{versao}{sufixo_idioma}.mp4"
+        mesmos = [h for h in proj["historico"] if h.get("variante") == variante]
+        versao = (mesmos[-1]["versao"] if mesmos else 0) + 1
+        destino = pasta(a.slug) / "preview" / f"{proj['produto']}-{tipo}-preview-v{versao}{sufixo_idioma}.mp4"
     diga("▶ montando o vídeo inteiro…")
     render.juntar_cenas(arquivos, destino, musica)
     from comum import duracao
     dur = duracao(destino)
 
     if a.final:
-        if versao != proj["versao"]:
-            proj["versao"] = versao
-        proj["historico"].append({"versao": versao, "quando": agora(), "arquivo": str(destino.relative_to(pasta(a.slug))),
+        proj["versao"] = max(proj["versao"], versao)
+        proj["historico"].append({"versao": versao, "variante": variante, "quando": agora(), "arquivo": str(destino.relative_to(pasta(a.slug))),
                                   "hash": versao_hash, "idioma": a.legenda,
                                   "renderizadas": rel["renderizadas"], "reaproveitadas": rel["reaproveitadas"]})
         salvar(proj)
@@ -520,10 +554,10 @@ def main() -> None:
     s = sub.add_parser("rascunho"); s.add_argument("slug"); s.add_argument("--sobrescrever", action="store_true"); s.set_defaults(f=cmd_rascunho)
     s = sub.add_parser("mostrar"); s.add_argument("slug"); s.set_defaults(f=cmd_mostrar, sobrescrever=False)
     s = sub.add_parser("aprovar"); s.add_argument("slug"); s.add_argument("--frase", required=True); s.set_defaults(f=cmd_aprovar)
-    s = sub.add_parser("custo"); s.add_argument("slug"); s.add_argument("--aceitar", action="store_true"); s.set_defaults(f=cmd_custo)
+    s = sub.add_parser("custo"); s.add_argument("slug"); s.add_argument("--aceitar", action="store_true"); s.add_argument("--simular-motor-b", action="store_true"); s.set_defaults(f=cmd_custo)
     s = sub.add_parser("takes"); s.add_argument("slug"); s.set_defaults(f=cmd_takes)
     s = sub.add_parser("take"); s.add_argument("slug"); s.add_argument("bloco"); s.add_argument("arquivo"); s.set_defaults(f=cmd_take)
-    s = sub.add_parser("produzir"); s.add_argument("slug"); s.add_argument("--final", action="store_true"); s.add_argument("--escala", type=float, default=0.5); s.add_argument("--legenda", default="pt", choices=["pt", "en"]); s.set_defaults(f=cmd_produzir)
+    s = sub.add_parser("produzir"); s.add_argument("slug"); s.add_argument("--final", action="store_true"); s.add_argument("--escala", type=float, default=0.5); s.add_argument("--legenda", default="pt", choices=["pt", "en"]); s.add_argument("--variante"); s.set_defaults(f=cmd_produzir)
     s = sub.add_parser("frases"); s.add_argument("slug"); s.set_defaults(f=cmd_frases)
     s = sub.add_parser("motor-b"); s.add_argument("slug"); s.add_argument("--autorizacao"); s.add_argument("--desligar", action="store_true"); s.set_defaults(f=cmd_motor_b)
     s = sub.add_parser("status"); s.add_argument("slug"); s.set_defaults(f=cmd_status)

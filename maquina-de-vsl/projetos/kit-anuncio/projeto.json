@@ -1,0 +1,18 @@
+{
+  "slug": "kit-anuncio",
+  "produto": "kit",
+  "formato": "9:16",
+  "motor": "A",
+  "motor_b": {
+    "ligado": false,
+    "autorizacao": null
+  },
+  "broll_ia": {
+    "ligado": false,
+    "autorizacao": null
+  },
+  "versao": 0,
+  "takes": {},
+  "historico": [],
+  "criado_em": "2026-11-26 12:36"
+}

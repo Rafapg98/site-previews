@@ -1,0 +1,14 @@
+{
+  "motor": "A",
+  "motor_b": false,
+  "broll_ia": false,
+  "itens": [
+    {
+      "item": "Edição local (FFmpeg + Whisper + Remotion)",
+      "usd": 0.0
+    }
+  ],
+  "total_usd": 0.0,
+  "hash": "57eeb844474d4ee3",
+  "aceito": false
+}

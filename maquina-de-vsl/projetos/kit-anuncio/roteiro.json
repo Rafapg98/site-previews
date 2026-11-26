@@ -1,0 +1,71 @@
+[
+  {
+    "id": "hook",
+    "ordem": 1,
+    "titulo": "Começo",
+    "modo": "fala",
+    "take": "01-hook",
+    "motor_b": false,
+    "tempo_estimado_s": 12,
+    "direcao": "Talking-head close, energia alta, lower-third com nome. Primeira frase já é a promessa/dor/prova — sem 'fala galera'.",
+    "variantes": {
+      "dor": {
+        "fala": "Se você trabalha de sub aqui nos Estados Unidos, conhece essa rotina: trabalha de segunda a segunda, tudo depende de você, e a sua empresa nunca sai do papel. Eu vivi isso. Por isso eu montei o Kit Empresa Completa.",
+        "tempo_estimado_s": 14
+      },
+      "stack": {
+        "fala": "Tudo o que a sua empresa precisa pra sair do papel soma {kit.preco_de}. Hoje você leva por {kit.preco_por}. Olha o que vem dentro.",
+        "tempo_estimado_s": 9
+      },
+      "prova": {
+        "fala": "Minha empresa tem nota {provas.google.nota} no Google com {provas.google.avaliacoes} avaliações e já passou de 1 milhão de dólares em obras vendidas em 2026. O setup que roda nela agora está num kit.",
+        "tempo_estimado_s": 13
+      }
+    },
+    "fala": "Se você trabalha de sub aqui nos Estados Unidos, conhece essa rotina: trabalha de segunda a segunda, tudo depende de você, e a sua empresa nunca sai do papel. Eu vivi isso. Por isso eu montei o Kit Empresa Completa."
+  },
+  {
+    "id": "mecanismo",
+    "ordem": 2,
+    "titulo": "O que vem no Kit",
+    "modo": "tela",
+    "take": "02-mecanismo",
+    "motor_b": false,
+    "tempo_estimado_s": 16,
+    "direcao": "Tela: os 6 itens do Kit entrando um a um. Rafael em círculo no topo.",
+    "fala": "O Kit Empresa Completa é o setup da sua empresa feito com a gente: LLC aberta no Google Setup 1:1, dashboard, site e folder, templates de invoice e estimate, QR codes e identidade visual. É o setup: não inclui operar Google Ads nem o selo do Local Services, que é aprovação do Google."
+  },
+  {
+    "id": "oferta",
+    "ordem": 3,
+    "titulo": "Oferta com stack ancorado",
+    "modo": "tela",
+    "take": "03-oferta",
+    "motor_b": false,
+    "tempo_estimado_s": 11,
+    "direcao": "Stack com valor de cada item, soma riscada, 'De/Por' grande, ding no preço. Bônus fora da soma.",
+    "fala": "Separado, tudo isso vale {kit.preco_de}. No Kit, sai de {kit.preco_de} por {kit.preco_por}. E no lote de lançamento você ainda leva o Compliance Pack e 1 mês de Growth grátis."
+  },
+  {
+    "id": "garantia",
+    "ordem": 4,
+    "titulo": "Garantia",
+    "modo": "cartao",
+    "take": "04-garantia",
+    "motor_b": false,
+    "tempo_estimado_s": 6,
+    "direcao": "Talking-head + selo de 7 dias.",
+    "fala": "E você tem {garantia.dias} dias de garantia: se não for pra você, eu devolvo 100%, sem perguntas."
+  },
+  {
+    "id": "cta",
+    "ordem": 5,
+    "titulo": "CTA — aplicação + WhatsApp",
+    "modo": "cartao",
+    "take": "05-cta",
+    "motor_b": false,
+    "tempo_estimado_s": 8,
+    "direcao": "Talking-head close + botão 'Aplicar e falar no WhatsApp' pulsando. CTA único.",
+    "fala": "Clica no botão, faz a aplicação e me chama no WhatsApp. A gente conversa antes de fechar, pra ver se é pra você. Empresa de verdade, sem guru."
+  }
+]
