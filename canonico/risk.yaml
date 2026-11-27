@@ -3,6 +3,8 @@
 # ATUALIZAÇÃO 2026-11-27: estratégia nova NO AR (Programa Estratégia Décadas + Variante A +
 # estudo de volume). Os motores oficiais das contas são os de TENDÊNCIA HTF abaixo; as
 # famílias intraday A/B/C viraram PROGRAMA DE ESTUDO até o veredito do journal em 26/12/2026.
+# ATUALIZAÇÃO 2026-11-27 (2): APROVAÇÃO UNIFICADA adotada — no CHALLENGE as duas contas rodam
+# o motor BTC-VA; a divisão por ativo do bloco `contas` vale na FUNDED (ver aprovacao_unificada).
 produto: FTMO Challenge 1-Step (NAO e 2-Step)
 rota_compra: ftmo.oanda.com (rota dos EUA)
 tipo_conta: Swing (decidido pelo Rafael em 2026-11-26; no 1-Step da rota OANDA o Swing EXISTE e e selecionavel)
@@ -12,20 +14,27 @@ fim_de_semana: "HOLD permitido pros DOIS ativos SE FIZER SENTIDO (decisao do Raf
 troca_de_tipo: "Standard->Swing nunca; Swing->Standard so com a conta sem nenhum trade"
 contas:
   - id: 1
-    ativo: XAU/USD
+    ativo: XAU/USD        # ativo da FUNDED; no challenge esta conta roda BTC/USD (motor BTC-VA)
     tamanho_usd: 200000
-    papel: ANCORA
-    motor: "trend DIARIO apenas: T3 momentum-100d + T1 Donchian 20/10 D1, stop 2xATR, saida pelo canal Donchian de 10"
+    papel: ANCORA (funded)
+    motor: "FUNDED: trend DIARIO apenas: T3 momentum-100d + T1 Donchian 20/10 D1, stop 2xATR, saida pelo canal Donchian de 10"
     risco_cheio_pct: 1.0        # R = US$ 2.000
     risco_reduzido_pct: 0.5     # US$ 1.000
   - id: 2
     ativo: BTC/USD
     tamanho_usd: 200000
-    papel: MOTOR (Variante A)
+    papel: MOTOR (Variante A)  # este motor roda nas DUAS contas durante o challenge
     motor: "T1 Donchian 20/10 H4 (saida pelo canal de 10) + bolso de Londres (custo <= 0,075R) SOMENTE com a conta livre"
     risco_cheio_pct: 0.5        # R = US$ 1.000 (Variante A — o 1% antigo do BTC esta REVOGADO)
     risco_reduzido_pct: 0.25    # US$ 500
     meta_em_R: 20               # +US$ 20.000 = +20R a meio risco
+aprovacao_unificada:
+  status: "ADOTADA em 2026-11-27 (decisao do Rafael + estudo aprovacao-unificada.md)"
+  challenge: "as DUAS contas rodam o motor BTC-VA (T1 Donchian 20/10 H4 + bolso de Londres com a conta livre, risco 0,5%, R = US$ 1.000/US$ 500, meta +20R por conta). Conta 1 NAO toca ouro ate estar funded"
+  funded: "cada conta converte na sua data de funded pro desenho do bloco `contas` (Conta 1 ancora ouro 1%, Conta 2 motor BTC 0,5%) — Variante A funded INALTERADA"
+  teto_ftmo: "US$ 400K por trader/estrategia PRE-scaling (2 x 200K = no teto, nao acima); nunca 3a conta ativa; recompra so substitui conta encerrada; nenhum trade de BTC em conta funded enquanto a gemea estiver em challenge"
+  numeros_estudo: "P(ambas funded) 86,1% em 24m (assimetrico: 1,4%), mediana 362 dias, 0 mortes, taxas US$ 1.838; transicao segura: folga cheia de US$ 20K na conversao (a passagem imprime em novo maximo de fechamento; 65 conversoes simuladas, 0 breaches)"
+  preco: "correlacao total no challenge: se o motor morrer, as duas morrem juntas (recompra US$ 1.838); kill criteria valem pelo par"
 meta_fase_unica_pct: 10            # +US$ 20.000 pra funded
 max_daily_loss_casa_pct: 3         # US$ 6.000 — piso do dia = saldo 00:00 CE(S)T - 6.000 (equity)
 max_loss_pct: 10                   # TRAILING de fim de dia: piso = maior fechamento - US$ 20.000
@@ -40,7 +49,7 @@ risco:
   veto_custo: "custo round-trip estimado > 0,075R = VETO (registrar 'veto — custo'); 0,05-0,075R = zona de cautela, so com alinhamento completo + justificativa escrita"
 estrategia_oficial:
   nome: "Variante A (Programa Estrategia Decadas, no ar desde 2026-11-27)"
-  evidencia: "~/workspace/research_notes/estrategia-decadas/report.md + variantes-imortalidade.md + volume-diversificacao.md"
+  evidencia: "~/workspace/research_notes/estrategia-decadas/report.md + variantes-imortalidade.md + volume-diversificacao.md + aprovacao-unificada.md"
   exit_20: "TESTADO no simulador FTMO em 2026-11-27 (exit20-ftmo.md) e NAO adotado: ouro perde expectancy no historico completo (+0,333R -> +0,316R); BTC ganha expectancy (+0,458R -> +0,626R) mas aprova menos em 24m (62% -> 43%) e extrai ~US$ 17-20K menos. FTMO fica na saida Donchian 10; exit-20 vale so na CONTA PESSOAL; re-teste na revisao trimestral de 2027-02-27"
   diversificacao_ftmo: "NAO aprovada: 1 posicao/conta faz diversificar realocar trades, nao multiplicar. ETH H4 = opcao documentada, nao ativa. EUR e prata reprovados"
   sessoes: "ouro: Londres prioritaria, Asia veto padrao, NY normal. BTC: NY ceticismo maximo (quase-veto), Londres primeiro"
