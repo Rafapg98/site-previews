@@ -41,7 +41,7 @@ risco:
 estrategia_oficial:
   nome: "Variante A (Programa Estrategia Decadas, no ar desde 2026-11-27)"
   evidencia: "~/workspace/research_notes/estrategia-decadas/report.md + variantes-imortalidade.md + volume-diversificacao.md"
-  exit_20: "EM TESTE no simulador FTMO (exit20-ftmo.md). Nas contas FTMO vale a saida Donchian 10 ate o veredito; exit-20 hoje so vale na CONTA PESSOAL"
+  exit_20: "TESTADO no simulador FTMO em 2026-11-27 (exit20-ftmo.md) e NAO adotado: ouro perde expectancy no historico completo (+0,333R -> +0,316R); BTC ganha expectancy (+0,458R -> +0,626R) mas aprova menos em 24m (62% -> 43%) e extrai ~US$ 17-20K menos. FTMO fica na saida Donchian 10; exit-20 vale so na CONTA PESSOAL; re-teste na revisao trimestral de 2027-02-27"
   diversificacao_ftmo: "NAO aprovada: 1 posicao/conta faz diversificar realocar trades, nao multiplicar. ETH H4 = opcao documentada, nao ativa. EUR e prata reprovados"
   sessoes: "ouro: Londres prioritaria, Asia veto padrao, NY normal. BTC: NY ceticismo maximo (quase-veto), Londres primeiro"
   entrada_reteste: "PROIBIDA como gatilho (medida: -0,37R); entrada oficial = confirmacao do shift de estrutura (vale pro estudo intraday)"
