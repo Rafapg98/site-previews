@@ -1,16 +1,32 @@
-# Regras duras de trading — FTMO Challenge 1-Step (canônico, 2026-11-26)
+# Regras duras de trading — FTMO Challenge 1-Step (canônico, atualizado 2026-11-27)
 # Regra dura só muda com a palavra do Rafael. Divergência = reportar, nunca "corrigir".
+# ATUALIZAÇÃO 2026-11-27: estratégia nova NO AR (Programa Estratégia Décadas + Variante A +
+# estudo de volume). Os motores oficiais das contas são os de TENDÊNCIA HTF abaixo; as
+# famílias intraday A/B/C viraram PROGRAMA DE ESTUDO até o veredito do journal em 26/12/2026.
 produto: FTMO Challenge 1-Step (NAO e 2-Step)
 rota_compra: ftmo.oanda.com (rota dos EUA)
 tipo_conta: Swing (decidido pelo Rafael em 2026-11-26; no 1-Step da rota OANDA o Swing EXISTE e e selecionavel)
-alavancagem: "1:30 e o numero de capa (FX). Por instrumento (specs oficiais OANDA, confirmadas 2026-11-26): XAUUSD contrato 100 oz, Swing 1:20; BTCUSD contrato 1, 1:4 nos dois tipos. Margem com R=US$ 2.000 nunca limita: pior stop do ouro (US$ 8) ~US$ 50 mil a ouro US$ 4.000; pior stop do BTC (US$ 800) ~US$ 62,5 mil a BTC US$ 100 mil. Passo de volume exato do MT5: confirmar na Specification pos-compra (a tabela oficial so da min units). Sizing sempre arredonda pra BAIXO no passo de volume."
+alavancagem: "1:30 e o numero de capa (FX). Por instrumento (specs oficiais OANDA, confirmadas 2026-11-26): XAUUSD contrato 100 oz, Swing 1:20; BTCUSD contrato 1, 1:4 nos dois tipos. Margem nunca limita o sizing nos R adotados. Passo de volume exato do MT5: confirmar na Specification pos-compra. Sizing sempre arredonda pra BAIXO no passo de volume."
 restricoes_funded: "Swing NAO tem restricao de noticia (+-2 min) nem obrigacao de fechar antes do fim de semana; essas restricoes eram do Standard e NAO se aplicam"
 fim_de_semana: "HOLD permitido pros DOIS ativos SE FIZER SENTIDO (decisao do Rafael, 2026-11-26): posicao protegida (stop no BE ou melhor, ou risco residual fracao pequena de R), estrutura HTF intacta, distancia do piso trailing confortavel mesmo com gap forte contra, nenhum evento de gap mapeado pra abertura de segunda; o plano declara a justificativa em uma linha. Faltando qualquer condicao, fecha antes da pausa de sexta. Abrir trade NOVO no fim de semana segue observacao (BTC) / impossivel (ouro fechado)."
 troca_de_tipo: "Standard->Swing nunca; Swing->Standard so com a conta sem nenhum trade"
 contas:
-  - { id: 1, ativo: XAU/USD, tamanho_usd: 200000 }
-  - { id: 2, ativo: BTC/USD, tamanho_usd: 200000 }
-meta_fase_unica_pct: 10            # +US$ 20.000 = +10R total pra funded
+  - id: 1
+    ativo: XAU/USD
+    tamanho_usd: 200000
+    papel: ANCORA
+    motor: "trend DIARIO apenas: T3 momentum-100d + T1 Donchian 20/10 D1, stop 2xATR, saida pelo canal Donchian de 10"
+    risco_cheio_pct: 1.0        # R = US$ 2.000
+    risco_reduzido_pct: 0.5     # US$ 1.000
+  - id: 2
+    ativo: BTC/USD
+    tamanho_usd: 200000
+    papel: MOTOR (Variante A)
+    motor: "T1 Donchian 20/10 H4 (saida pelo canal de 10) + bolso de Londres (custo <= 0,075R) SOMENTE com a conta livre"
+    risco_cheio_pct: 0.5        # R = US$ 1.000 (Variante A — o 1% antigo do BTC esta REVOGADO)
+    risco_reduzido_pct: 0.25    # US$ 500
+    meta_em_R: 20               # +US$ 20.000 = +20R a meio risco
+meta_fase_unica_pct: 10            # +US$ 20.000 pra funded
 max_daily_loss_casa_pct: 3         # US$ 6.000 — piso do dia = saldo 00:00 CE(S)T - 6.000 (equity)
 max_loss_pct: 10                   # TRAILING de fim de dia: piso = maior fechamento - US$ 20.000
 consistency_pct: 50                # melhor dia <= 50% do lucro total fechado; portao, nao violacao
@@ -18,20 +34,41 @@ dias_minimos: 0
 split_rewards_pct: 90
 taxa_usd: 919                      # nao reembolsavel, por conta
 risco:
-  r_usd: 2000                      # 1% por trade
   stop_pessoal_diario_usd: -4000   # por conta, dentro do limite da casa
   limite_trades_dia: null          # sem teto: setup valido e alinhado entra
   posicoes_abertas_por_conta: 1
-familias:
-  A: { nome: "sweep + rejeicao + shift de estrutura", portao_rr: 1.5 }
-  B: { nome: "rompimento + reteste", portao_rr: 2.0 }
-  C: { nome: "Fimathe corrigido (so ouro, ancora 20:00 Brasilia, canal nos corpos)", portao_rr: 1.5, alvo2: C2 }
-  D: { nome: "reversao em range", status: "somente estudo, meio risco" }
+  veto_custo: "custo round-trip estimado > 0,075R = VETO (registrar 'veto — custo'); 0,05-0,075R = zona de cautela, so com alinhamento completo + justificativa escrita"
+estrategia_oficial:
+  nome: "Variante A (Programa Estrategia Decadas, no ar desde 2026-11-27)"
+  evidencia: "~/workspace/research_notes/estrategia-decadas/report.md + variantes-imortalidade.md + volume-diversificacao.md"
+  exit_20: "EM TESTE no simulador FTMO (exit20-ftmo.md). Nas contas FTMO vale a saida Donchian 10 ate o veredito; exit-20 hoje so vale na CONTA PESSOAL"
+  diversificacao_ftmo: "NAO aprovada: 1 posicao/conta faz diversificar realocar trades, nao multiplicar. ETH H4 = opcao documentada, nao ativa. EUR e prata reprovados"
+  sessoes: "ouro: Londres prioritaria, Asia veto padrao, NY normal. BTC: NY ceticismo maximo (quase-veto), Londres primeiro"
+  entrada_reteste: "PROIBIDA como gatilho (medida: -0,37R); entrada oficial = confirmacao do shift de estrutura (vale pro estudo intraday)"
+familias_estudo_intraday:  # PROGRAMA DE ESTUDO ate 26/12/2026 — NAO sao motores das contas
+  A: { nome: "sweep + rejeicao + shift de estrutura", portao_rr: 1.5, status: "estudo discricionario" }
+  B: { nome: "rompimento + reteste", portao_rr: 2.0, status: "estudo discricionario" }
+  C: { nome: "Fimathe corrigido (so ouro, ancora 20:00 Brasilia, canal nos corpos)", portao_rr: 1.5, alvo2: C2, status: "estudo discricionario" }
+  D: { nome: "reversao em range", status: "APOSENTADA (reprovada nas 4 celulas do backtest de trilhas)" }
+  manejo: "50% no TP1, stop no break-even, runner ate 3R (vale SO pro estudo intraday; os motores de tendencia usam saida Donchian + stop ATR, sem parciais)"
 drawdown_do_pico:
   - { faixa: "<3%", risco: 1.0 }
   - { faixa: "3-5%", risco: 0.5 }
   - { faixa: ">=5%", acao: "pausa ate fim da semana + revisao escrita" }
   - { faixa: ">=7%", acao: "stop total" }
-manejo: "50% no TP1, stop no break-even, runner ate 3R (R efetivo ~2,5R)"
-post_mortem: "todo trade fechado <= 0R ganha post-mortem na mesma checagem; padrao = NAO mudar nada; ajuste so com motivo valido em nivel de mecanismo; causa controlavel repetida 3+ vezes vira proposta formal"
-notificacao: "toda ENTRADA de trade e avisada ao Rafael na hora (ativo, conta, familia, entrada, stop, TP1, TP2, R)"
+payout:
+  regra: "mensal, SOMENTE o lucro acima de (pico de fechamento - US$ 4.000); Muse calcula e reporta ANTES do saque (pico, saldo, sacavel, liquido 90%, saldo pos-saque, distancia ao piso)"
+  freio: "DD ajustado > US$ 6.000 = NAO sacar no ciclo"
+  registro: "cada saque entra no Dashboard Trading (bloco withdrawals/break-even por conta; taxas US$ 919 x2 = US$ 1.838)"
+scaling_ftmo:
+  termos: "a cada 4 meses como FTMO Trader: >=10% de lucro liquido na janela + >=2 Rewards processados + saldo positivo -> conta +25% do saldo INICIAL (linear), teto US$ 2M somando contas; limites e R reancoram no tamanho novo"
+  rotina: "a rotina de payout vigia a janela (meses desde funded/ultimo scale-up, lucro na janela, Rewards processados) e avisa se a janela estiver fechando curta"
+post_mortem: "todo trade fechado <= 0R ganha post-mortem na mesma checagem; padrao = NAO mudar nada; causa controlavel repetida 3+ vezes vira proposta formal"
+notificacao: "toda ENTRADA de trade e avisada ao Rafael na hora (ativo, conta, familia/motor, entrada, stop, alvos, R)"
+revisao_trimestral: "cron revisao-trimestral-estrategia-trade (1a em 2027-02-27): re-mede expectancy, sobrevivencia e os kill criteria; regras duras so mudam com a palavra do Rafael"
+conta_pessoal:
+  spec: "~/workspace/research_notes/estrategia-decadas/conta-pessoal-spec.md (secao CONFIGURACAO DE INICIO — pronta)"
+  inicio: "2 motores simultaneos: ouro D1 (Donchian 20, saida canal 20 + momentum-100d) e BTC H4 (Donchian 20/20); risco fixo 2%/posicao; piramide +0,5R em +1R/+2R; teto de calor 6%; breakers sobre equity FECHADO (-10% meio risco, -15% pausa 30d, -20% stop 90d, mes <= -8% trava o mes)"
+  fase_2: "cesta diversificada (ETH H4, JPY D1, oleo D1) — decisao separada, DD historico da cesta -32,3% registrado na spec"
+  broker: "Interactive Brokers Pro (ouro via MGC, BTC via MBT)"
+  ativacao: "SOMENTE apos aprovacao FTMO + primeiros payouts; capital e data em branco de proposito"
