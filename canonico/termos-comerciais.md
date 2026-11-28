@@ -11,14 +11,14 @@ Atualizado: 2026-11-27. Se qualquer outro arquivo divergir, vale ESTE.
 - Mentoria 1:1: US$ 2.997 + 3 meses de Growth grátis
 - Desconto cruzado de 15% nos dois sentidos (Kit→Mentoria US$ 2.547,45 · Mentoria→Kit US$ 762,45)
 - Mini-cursos: US$ 17,90 e US$ 27,90
-- Operação Aplicações + Google: US$ 197/mês (assinatura opcional, oferecida pós-Kit — NÃO é bônus do Kit)
-- Avulso "Pronto pra Trabalhar de Sub": US$ 97,90 (pagamento único, UMA rodada de aplicações; só pra quem NÃO tem o Kit)
+- Aplicações avulso "Pronto pra Trabalhar de Sub": US$ 197 (pagamento único, UMA rodada de aplicações; opcional, pra qualquer cliente — NÃO é bônus do Kit)
+- Cuidado Google + Website + Instagram: US$ 297/mês (assinatura opcional de cuidado contínuo — Google, website e Instagram; NÃO inclui aplicações)
 
 ## Kit Empresa Completa — 6 itens (US$ 897)
 
 1. Google Setup 1:1 (Business Profile, Search Console, cadastro no Local Services) incluindo abertura da LLC **no estado do cliente**, com a taxa estadual inclusa — é SETUP: não inclui operar Google Ads nem prometer o selo verificado do Local Services (aprovação é do Google)
 2. Dashboard Profissional · 3. Website + Folder · 4. Templates de invoice/estimate com cláusulas de proteção · 5. Kit de QR Codes · 6. Identidade Visual Básica
-- Bônus do Kit: **2 meses de Growth grátis** — nada além disso. O antigo "Compliance Pack como bônus do lote de lançamento" **ACABOU em 2026-11-27**: aplicações são serviço à parte (Operação Aplicações + Google, US$ 197/mês, pro comprador do Kit; avulso de US$ 97,90 pra quem não tem o Kit)
+- Bônus do Kit: **2 meses de Growth grátis** — nada além disso. O antigo "Compliance Pack como bônus do lote de lançamento" **ACABOU em 2026-11-27**: aplicações são serviço à parte (avulso de Aplicações "Pronto pra Trabalhar de Sub", US$ 197 pagamento único, pra qualquer cliente; o cuidado contínuo de Google/website/Instagram é outro serviço à parte, US$ 297/mês, sem aplicações). A antiga "Operação Aplicações + Google — US$ 197/mês" foi EXTINTA em 2026-11-27
 - Contabilidade com IA NÃO faz parte do Kit (upsell separado, futuro)
 
 ## Cupons (objetos a criar no Stripe quando conectar)
